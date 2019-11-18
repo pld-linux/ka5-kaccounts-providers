@@ -14,6 +14,10 @@ URL:		http://www.kde.org/
 BuildRequires:	Qt5Core-devel >= %{qtver}
 BuildRequires:	cmake >= 2.8.12
 BuildRequires:	kf5-extra-cmake-modules >= %{kframever}
+BuildRequires:	ka5-kaccounts-integration-devel >= %{kdeappsver}
+BuildRequires:	libaccounts-glib-devel
+BuildRequires:	libaccounts-qt5-devel
+BuildRequires:	libsignon-qt5-devel
 BuildRequires:	ninja
 BuildRequires:	qt5-build >= %{qtver}
 BuildRequires:	rpmbuild(macros) >= 1.164
