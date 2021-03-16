@@ -1,20 +1,20 @@
-%define		kdeappsver	19.04.1
+%define		kdeappsver	20.12.3
 %define		kframever	5.56.0
 %define		qtver		5.9.0
 %define		kaname		kaccounts-providers
 Summary:	KAccounts Providers
 Name:		ka5-%{kaname}
-Version:	19.04.1
+Version:	20.12.3
 Release:	1
 License:	GPL v2+/LGPL v2.1+
 Group:		X11/Libraries
-Source0:	http://download.kde.org/stable/applications/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
-# Source0-md5:	b66b9bc6b2ee7a8cb4061cfcba28b550
+Source0:	http://download.kde.org/stable/release-service/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
+# Source0-md5:	5db3700c549107a7c0f23fdec1f7ae5d
 URL:		http://www.kde.org/
 BuildRequires:	Qt5Core-devel >= %{qtver}
 BuildRequires:	cmake >= 2.8.12
-BuildRequires:	kf5-extra-cmake-modules >= %{kframever}
 BuildRequires:	ka5-kaccounts-integration-devel >= %{kdeappsver}
+BuildRequires:	kf5-extra-cmake-modules >= %{kframever}
 BuildRequires:	libaccounts-glib-devel
 BuildRequires:	libaccounts-qt5-devel
 BuildRequires:	libsignon-qt5-devel
@@ -65,3 +65,16 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/accounts
 %{_datadir}/kpackage/genericqml/org.kde.kaccounts.owncloud
 %{_datadir}/metainfo/org.kde.kaccounts.owncloud.appdata.xml
+%attr(755,root,root) %{_libdir}/qt5/plugins/kaccounts/ui/nextcloud_plugin_kaccounts.so
+%{_iconsdir}/hicolor/256x256/apps/kaccounts-owncloud.png
+%{_iconsdir}/hicolor/scalable/apps/kaccounts-nextcloud.svg
+%dir %{_datadir}/kpackage/genericqml/org.kde.kaccounts.nextcloud
+%dir %{_datadir}/kpackage/genericqml/org.kde.kaccounts.nextcloud/contents
+%dir %{_datadir}/kpackage/genericqml/org.kde.kaccounts.nextcloud/contents/ui
+%{_datadir}/kpackage/genericqml/org.kde.kaccounts.nextcloud/contents/ui/Server.qml
+%{_datadir}/kpackage/genericqml/org.kde.kaccounts.nextcloud/contents/ui/Services.qml
+%{_datadir}/kpackage/genericqml/org.kde.kaccounts.nextcloud/contents/ui/WebLogin.qml
+%{_datadir}/kpackage/genericqml/org.kde.kaccounts.nextcloud/contents/ui/main.qml
+%{_datadir}/kpackage/genericqml/org.kde.kaccounts.nextcloud/metadata.desktop
+%{_datadir}/kpackage/genericqml/org.kde.kaccounts.nextcloud/metadata.json
+%{_datadir}/metainfo/org.kde.kaccounts.nextcloud.appdata.xml
