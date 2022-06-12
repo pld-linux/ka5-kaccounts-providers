@@ -8,7 +8,7 @@
 Summary:	KAccounts Providers
 Name:		ka5-%{kaname}
 Version:	22.04.2
-Release:	1
+Release:	2
 License:	GPL v2+/LGPL v2.1+
 Group:		X11/Libraries
 Source0:	https://download.kde.org/stable/release-service/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
@@ -74,8 +74,10 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/accounts
 %{_datadir}/kpackage/genericqml/org.kde.kaccounts.owncloud
 %{_datadir}/metainfo/org.kde.kaccounts.owncloud.appdata.xml
-%attr(755,root,root) %{_libdir}/qt5/plugins/kaccounts/ui/nextcloud_plugin_kaccounts.so
 %{_iconsdir}/hicolor/256x256/apps/kaccounts-owncloud.png
+
+%ifarch i686  %{x8664}
+%attr(755,root,root) %{_libdir}/qt5/plugins/kaccounts/ui/nextcloud_plugin_kaccounts.so
 %{_iconsdir}/hicolor/scalable/apps/kaccounts-nextcloud.svg
 %dir %{_datadir}/kpackage/genericqml/org.kde.kaccounts.nextcloud
 %dir %{_datadir}/kpackage/genericqml/org.kde.kaccounts.nextcloud/contents
@@ -87,3 +89,4 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/kpackage/genericqml/org.kde.kaccounts.nextcloud/metadata.desktop
 %{_datadir}/kpackage/genericqml/org.kde.kaccounts.nextcloud/metadata.json
 %{_datadir}/metainfo/org.kde.kaccounts.nextcloud.appdata.xml
+%endif
