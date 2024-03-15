@@ -1,28 +1,28 @@
 #
 # Conditional build:
 %bcond_with	tests		# build with tests
-%define		kdeappsver	24.01.95
+%define		kdeappsver	23.08.4
 %define		kframever	5.94.0
 %define		qtver		5.15.2
 %define		kaname		kaccounts-providers
 Summary:	KAccounts Providers
 Name:		ka5-%{kaname}
-Version:	24.01.95
-Release:	0.1
+Version:	23.08.4
+Release:	1
 License:	GPL v2+/LGPL v2.1+
 Group:		X11/Libraries
-Source0:	https://download.kde.org/unstable/release-service/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
-# Source0-md5:	c87c97368de0f650f626710182f1b882
+Source0:	https://download.kde.org/stable/release-service/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
+# Source0-md5:	5408b8b446488953f3b35f701b62b013
 URL:		http://www.kde.org/
-BuildRequires:	Qt6Core-devel >= %{qtver}
+BuildRequires:	Qt5Core-devel >= %{qtver}
 BuildRequires:	cmake >= 3.20
 BuildRequires:	ka5-kaccounts-integration-devel >= %{kdeappsver}
-BuildRequires:	kf6-extra-cmake-modules >= %{kframever}
+BuildRequires:	kf5-extra-cmake-modules >= %{kframever}
 BuildRequires:	libaccounts-glib-devel
-BuildRequires:	libaccounts-qt6-devel
-BuildRequires:	libsignon-qt6-devel
+BuildRequires:	libaccounts-qt5-devel
+BuildRequires:	libsignon-qt5-devel
 BuildRequires:	ninja
-BuildRequires:	qt6-build >= %{qtver}
+BuildRequires:	qt5-build >= %{qtver}
 BuildRequires:	rpmbuild(macros) >= 1.164
 BuildRequires:	shared-mime-info
 BuildRequires:	tar >= 1:1.22
@@ -66,15 +66,16 @@ rm -rf $RPM_BUILD_ROOT
 %{_sysconfdir}/signon-ui/webkit-options.d/api.twitter.com.conf
 %{_sysconfdir}/signon-ui/webkit-options.d/identi.ca.conf
 %{_sysconfdir}/signon-ui/webkit-options.d/www.facebook.com.conf
-%dir %{_libdir}/qt6/plugins/kaccounts
-%dir %{_libdir}/qt6/plugins/kaccounts/ui
-%attr(755,root,root) %{_libdir}/qt6/plugins/kaccounts/ui/owncloud_plugin_kaccounts.so
+%dir %{_libdir}/qt5/plugins/kaccounts
+%dir %{_libdir}/qt5/plugins/kaccounts/ui
+%attr(755,root,root) %{_libdir}/qt5/plugins/kaccounts/ui/owncloud_plugin_kaccounts.so
 %{_datadir}/accounts
 %{_datadir}/kpackage/genericqml/org.kde.kaccounts.owncloud
+%{_datadir}/metainfo/org.kde.kaccounts.owncloud.appdata.xml
 %{_iconsdir}/hicolor/256x256/apps/kaccounts-owncloud.png
 
 %ifarch i686  %{x8664}
-%attr(755,root,root) %{_libdir}/qt6/plugins/kaccounts/ui/nextcloud_plugin_kaccounts.so
+%attr(755,root,root) %{_libdir}/qt5/plugins/kaccounts/ui/nextcloud_plugin_kaccounts.so
 %{_iconsdir}/hicolor/scalable/apps/kaccounts-nextcloud.svg
 %dir %{_datadir}/kpackage/genericqml/org.kde.kaccounts.nextcloud
 %dir %{_datadir}/kpackage/genericqml/org.kde.kaccounts.nextcloud/contents
@@ -84,4 +85,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/kpackage/genericqml/org.kde.kaccounts.nextcloud/contents/ui/WebLogin.qml
 %{_datadir}/kpackage/genericqml/org.kde.kaccounts.nextcloud/contents/ui/main.qml
 %{_datadir}/kpackage/genericqml/org.kde.kaccounts.nextcloud/metadata.desktop
+%{_datadir}/kpackage/genericqml/org.kde.kaccounts.nextcloud/metadata.json
+%{_datadir}/metainfo/org.kde.kaccounts.nextcloud.appdata.xml
 %endif
